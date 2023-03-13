@@ -5,10 +5,6 @@ services:
     image: nginxproxy/nginx-proxy:${IMAGE_VARIANT:-latest}
     security_opt:
       - label:type:docker_t
-    environment:
-      HTTPS_METHOD: ${HTTPS_METHOD:-redirect}
-      SSL_POLICY: ${SSL_POLICY:-Mozilla-Intermediate}
-      DEFAULT_HOST: ${DEFAULT_HOST}
     volumes:
       - ${DOCKER_SOCKET_PATH:-/var/run/docker.sock}:/tmp/docker.sock:ro
       - ${TLS_DIRECTORY_PATH:?}:/etc/nginx/certs
